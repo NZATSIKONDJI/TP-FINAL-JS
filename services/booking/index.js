@@ -31,14 +31,18 @@ app.post('/bookings', async (req, res) => {
 
     const payResp = await axios.post(`${PAY_SVC}/payments`, { amount, card });
     if (payResp.data.status === 'accepte') {
+
       // confirmer la réservation
+
       await axios.post(`${INV_SVC}/reservations/${reservationId}/confirm`);
       record.status = 'confirmee';
       record.reservationId = reservationId;
       bookings.set(bookingId, record);
       return res.status(201).json(record);
     } else {
+
       // paiement refusé : libérer la réservation
+      
       await axios.post(`${INV_SVC}/reservations/${reservationId}/cancel`);
       record.status = 'paiement_echoue';
       record.reservationId = reservationId;

@@ -1,6 +1,6 @@
-# TP Reservation - Démo microservices (version française)
+# TP Reservation - Démo microservices 
 
-Ce dépôt contient quatre microservices simples démontrant le flux de réservation :
+
 
 - Service d'identité (port 3001)
 - Service inventaire (port 3002)

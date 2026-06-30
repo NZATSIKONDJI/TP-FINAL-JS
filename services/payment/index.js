@@ -6,7 +6,9 @@ app.use(express.json());
 app.post('/payments', (req, res) => {
   const { amount, card } = req.body;
   if (typeof amount !== 'number') return res.status(400).json({ error: "Montant invalide" });
+
   // simulation de validation de carte
+  
   if (card && card.number && card.number === '0000-0000-0000-0000') {
     return res.json({ status: 'refuse', reason: 'carte_invalide' });
   }
